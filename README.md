@@ -10,11 +10,11 @@
 - 作業系統：Arch Linux
 
 ## 一些有用的指令
-| 指令       | 說明 |
-|:---------:|:---:|
-| ping      | 看你連不連的到某個host                      |
+| 指令       | 說明                                                             |
+|:---------:|:-----------------------------------------------------------------|
+| ping      | 看你連不連的到某個host                                              |
 | ifconfig  | interface config，可以看到所有interface, IP, 或是up/down某個interface|
-| ip link   |     |
+| ip link   |              |
 | nano      |     |
 | netctl    | Network manager, 可以enable/disable/start/|
 | systemctl | 用來enable/start/stop/restart service     |
@@ -28,7 +28,7 @@ ip link #查看網路接口
 ```
 cd /etc/netctl
 ```
-在這個資料夾裡面有伺服器的對外網路設定。
+在這個資料夾裡面有伺服器的對外網路設定檔案（在我們的伺服器裡面叫 ntuee）。
 ```bash
 nano ntuee
 ```
@@ -62,11 +62,29 @@ ifconfig enp1s0 up
 ip link set enp1s0 down
 ip link set enp1s0 up
 ```
-重新啟動 ntuee 網路設定。
+重新啟動 ntuee 網路設定 (network profile)。
 ```
 netctl restart ntuee
+```
+（optional？worth a try）
+```
+netctl disable ntuee
+netctl enable ntuee
 ```
 查看 ntuee 網路狀況。
 ```
 netctl status ntuee
 ```
+正常運作的話在 Active 的欄位應該要顯示綠色的 *active*。
+
+### 重新設定網路
+```
+cd /etc/netctl
+cp /examples/ethernet-static <new config file>
+```
+在 `new config file` 裡面設定 interface, dns, gateway 等資訊。
+## Some References
+- 伺服器沒有對外網路：
+    - https://unix.stackexchange.com/questions/80493/arch-linux-connect-network-is-unreachable
+- `ip` command
+    - https://www.zybuluo.com/ghostfn1/note/120631

@@ -1,5 +1,8 @@
 # Server Guide
-
+## 連上伺服器
+```bash
+ssh eeinfo@ntuee.org -p 22222
+```
 ## 實體伺服器位置
 
 - 電二 136

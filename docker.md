@@ -131,3 +131,10 @@ docker-compose.yml所在資料夾名稱會是project名稱
 - docker-compose的指令都是打service，不是打他的container名稱
 - docker exec那些才是打container名稱
 - 最好在docker-compose.yml同目錄執行docker-compose
+
+## 備註
+
+- autocompletion:
+- 可以用 zsh plugin (包含在 oh-my-zsh 裡面)
+  - docker-compose
+  - docker
